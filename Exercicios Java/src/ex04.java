@@ -10,14 +10,14 @@ public class ex04 {
 		float consta;
 		int op = 0;
 
-		Scanner sc = new Scanner(System.in);
+		Scanner leia = new Scanner(System.in);
 
 		
 		System.out.println("Digite os valores da primeira Matriz 2 x 2:");
 		for (int i = 0; i < 2; i++) {
 			for (int j = 0; j < 2; j++) {
 				System.out.print("["+(i+1)+"]["+(j+1)+"]: ");
-				A[i][j] = sc.nextFloat();
+				A[i][j] = leia.nextFloat();
 			}
 		}
 
@@ -26,7 +26,7 @@ public class ex04 {
 		for (int i = 0; i < 2; i++) {
 			for (int j = 0; j < 2; j++) {
 				System.out.print("["+(i+1)+"]["+(j+1)+"]: ");
-				B[i][j] = sc.nextFloat();
+				B[i][j] = leia.nextFloat();
 			}
 		}
 
@@ -38,7 +38,7 @@ public class ex04 {
 					+ "\n4- Imprimir as matrizes"
 					+ "\n5 - Sair"
 					+ "\n\nDigite sua opção: ");
-			op = sc.nextInt();
+			op = leia.nextInt();
 
 			switch(op) {
 			case 1:
@@ -68,7 +68,7 @@ public class ex04 {
 			case 3:
 				
 				System.out.println("\nEntre com um valor da constante: ");
-				consta = sc.nextFloat();
+				consta = leia.nextFloat();
 
 				System.out.println("\n\tMatrizes somadas com a constante!");
 
