@@ -1,4 +1,6 @@
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Scanner;
 
 public class Estoque {
@@ -16,11 +18,17 @@ public class Estoque {
 
 		Scanner leia = new Scanner(System.in);
 
-		
+		Collection<String> nomes = new ArrayList();
+		nomes.add(" Ação, Aventura");
+		nomes.add(" Comédia, Documentario ");
+		nomes.add(" Drama, Anime ");
+		nomes.add(" Romance, Terror e outros ...");
+
+		System.out.println(" Essas são as opções:" + nomes);
 
 		for (int x = 1; x > 0; x++) {
-			
-			System.out.println("Gostaria de cadastrar o livro digite 1 ou 2 Para excluir  ou 3 Para sair do programa :");
+
+			System.out.println("Gostaria de cadastrar o livro digite 1 \n 2 Para excluir \n 3 Para sair do programa :");
 			opcao = leia.nextInt();
 
 			if (opcao == 1) {
@@ -43,6 +51,9 @@ public class Estoque {
 				quantidade = leia.nextInt();
 
 				Livro livro = new Livro(titulo, autor, categoria, editora, isbn, quantidade);
+				System.out.println("Deseja ver algum outro livro ? ");
+				opcao = leia.nextInt();
+
 			} else if (opcao == 2) {
 				System.out.println("Digite o isbn que deseja excluir : ");
 				isbn = leia.next();
@@ -53,8 +64,8 @@ public class Estoque {
 
 			} else {
 				System.out.println("O pragama encerrou!!! ");
-				x=-1;
-				
+				x = -1;
+
 			}
 
 		}
