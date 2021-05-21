@@ -1,0 +1,34 @@
+
+CREATE DATABASE db_rh;
+
+USE db_rh;
+
+CREATE TABLE tb_funcs (
+id BIGINT AUTO_INCREMENT NOT NULL,
+nome VARCHAR(255),
+telefone INT,
+email VARCHAR(255),
+endereco VARCHAR(255),
+salario DECIMAL(10,2),
+
+PRIMARY KEY(id)
+);
+
+INSERT INTO tb_funcs (nome, telefone, email, endereco, salario) 
+VALUES (" Joana ",111111111,"email1@rh.com","Rua ola numero 1", 8000);
+INSERT INTO tb_funcs (nome, telefone, email, endereco, salario) 
+VALUES ("Mariana",222222222,"email2@rh.com","Rua ola numero 2", 4500);
+INSERT INTO tb_funcs (nome, telefone, email, endereco, salario) 
+VALUES ("Leonardo",333333333,"email3@rh.com","Rua ola numero 3", 1000);
+INSERT INTO tb_funcs (nome, telefone, email, endereco, salario) 
+VALUES ("Carlos",444444444,"email4@rh.com","Rua ola numero 4", 1400);
+INSERT INTO tb_funcs (nome, telefone, email, endereco, salario) 
+VALUES ("Regina",555555555,"email5@rh.com","Rua ola numero 5", 8000);
+
+SELECT nome, salario FROM tb_funcs WHERE salario > 2000; -- selecionando nome e salario dos funcionarios com salario maior que 2000
+
+SELECT nome, salario FROM tb_funcs WHERE salario < 2000; -- selecionando nome e salario dos funcionarios com salario maior que 2000
+
+
+
+SELECT * FROM tb_funcs;
