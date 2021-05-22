@@ -1,0 +1,48 @@
+create database db_pizzaria_legal;
+
+CREATE TABLE tb_categoria (
+	id_categoria INT NOT NULL AUTO_INCREMENT,
+    nome VARCHAR(255) NOT NULL,
+    tipo VARCHAR(255) NOT NULL,
+    PRIMARY KEY (id_categoria)
+);
+create database db_pizzaria_legal;
+
+CREATE TABLE tb_categoria (
+	id_categoria INT NOT NULL AUTO_INCREMENT,
+    nome VARCHAR(255) NOT NULL,
+    tipo VARCHAR(255) NOT NULL,
+    PRIMARY KEY (id_categoria)
+);
+INSERT INTO tb_categoria (nome, tipo)
+VALUES
+	("Salgada", "Pizza do tipo salgada"),
+    ("Doce", "Pizza do tipo doce");
+
+CREATE TABLE tb_pizza (
+	id_pizza INT NOT NULL AUTO_INCREMENT,
+    nome VARCHAR(255) NOT NULL,
+    ingrediente VARCHAR(255) NOT NULL,
+    tamanho VARCHAR (255),
+    fk_categoria INT NOT NULL,
+    preco DECIMAL(10,2) NOT NULL,
+    PRIMARY KEY (id_pizza),
+    FOREIGN KEY (fk_categoria) REFERENCES tb_categoria(id_categoria)
+);
+INSERT INTO tb_pizza (nome, ingrediente,tamanho, fk_categoria, preco)
+VALUES
+	("Baru", "Presunto, mussarela e rodelas de tomate","G", 1, 46.90),
+    ("Modão", "Calabresa, presunto, frango, bacon, milho, ovos, cebola, catupiry, cheddar e mussarela", "G", 1, 60.90),
+    ("Frango Catupiry", "Frango desfiado, catupiry e azeitonas","M", 1, 36.90),
+    ("Frango Cheeder", "Frango desfiado, cheeder e bacon","G", 1, 56.90),
+    ("Dois amores", "Chocolate ao leite, chocolate branco e morango","M", 1, 36.90),
+    ("Brigadeiro", "Chocolate e granulado", "M",2, 36.90),
+    ("Romeu e Julieta", "Mussarela e goiabada","P",2, 26.90);
+    
+    SELECT nome, ingrediente, preco FROM tb_pizza WHERE preco >= 45;
+    SELECT nome, ingrediente, preco FROM tb_pizza WHERE preco BETWEEN 29 and 60;
+    SELECT nome, ingrediente, preco FROM tb_pizza WHERE nome LIKE '%F%';
+	SELECT tb_pizza.nome, tb_pizza.ingrediente,tb_pizza.tamanho, tb_categoria.nome AS categoria, tb_pizza.preco
+	FROM tb_pizza
+    INNER JOIN tb_categoria ON tb_pizza.fk_categoria = tb_categoria.id_categoria
+WHERE tb_categoria.nome LIKE '%Salgada%';

@@ -1,0 +1,39 @@
+CREATE TABLE tb_categoria (
+	id_categoria INT NOT NULL AUTO_INCREMENT,
+    nome VARCHAR(255) NOT NULL,
+    tipo VARCHAR(255) NOT NULL,
+    PRIMARY KEY (id_categoria)
+);
+INSERT INTO tb_categoria (nome, tipo)
+VALUES
+	("Higiene Pessoal", "Higiene em geral"),
+    ("Medicamentos Adulto", "Medicamentos Adulto em geral"),
+    ("Medicamentos Infantil", "Medicamentos Infantil em geral");
+    
+    CREATE TABLE tb_produto (
+	id_produto INT NOT NULL AUTO_INCREMENT,
+    nome VARCHAR(255) NOT NULL,
+    tipo VARCHAR(255) NOT NULL,
+    fk_categoria INT NOT NULL,
+    preco DECIMAL(10,2) NOT NULL,
+    PRIMARY KEY (id_produto),
+    FOREIGN KEY (fk_categoria) REFERENCES tb_categoria(id_categoria)
+    );
+    INSERT INTO tb_produto (nome, tipo, fk_categoria, preco)
+VALUES
+	("Dorflex", "Dorflex age na dor e relaxa a tensão muscular", 2, 4.89),
+    ("Dipirona", "A Dipirona é indicada para combater a febre, baixar a temperatura do corpo e aliviar a dor", 2, 3.99),
+    ("Dipirona Infantil", "A Dipirona é indicada para combater a febre, baixar a temperatura do corpo e aliviar a dor para crianças", 3, 15.99),
+    ("Fralda descartavel", "fralda infantil para uso de 0 á 3 anos",1, 75.99),
+    ("Sabonete Líquido", "Sabonete líquido corporal ", 1, 6.95),
+    ("Soro infantil", "Soro fisiologico para crianças", 3, 10.99);
+SELECT nome, tipo, preco FROM tb_produto WHERE preco >= 50;
+SELECT nome, tipo, preco FROM tb_produto WHERE preco BETWEEN 3 and 60;
+SELECT nome, tipo, preco FROM tb_produto WHERE nome LIKE "%D%";
+SELECT tb_produto.nome, tb_produto.tipo, tb_categoria.nome AS categoria, tb_produto.preco 
+FROM tb_produto
+INNER JOIN tb_categoria on tb_produto.fk_categoria = tb_categoria.id_categoria;
+SELECT tb_produto.nome, tb_produto.tipo, tb_categoria.nome AS categoria, tb_produto.preco 
+FROM tb_produto
+INNER JOIN tb_categoria on tb_produto.fk_categoria = tb_categoria.id_categoria
+WHERE tb_categoria.nome LIKE "%Higiene%";  

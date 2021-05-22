@@ -1,0 +1,117 @@
+CREATE TABLE tb_classe (
+	id_classe INT NOT NULL AUTO_INCREMENT,
+    nome VARCHAR(255) NOT NULL,
+    tipo VARCHAR(255) NOT NULL,
+    PRIMARY KEY (id_classe)
+);
+
+CREATE TABLE tb_personagem (
+	id_personagem INT NOT NULL AUTO_INCREMENT,
+    nome VARCHAR(255) NOT NULL,
+    fk_classe INT NOT NULL,
+    poder_ataque INT NOT NULL,
+    poder_defesa INT NOT NULL,
+    PRIMARY KEY (id_personagem),
+    FOREIGN KEY (fk_classe) REFERENCES tb_classe(id_classe)
+);
+
+INSERT INTO tb_classe (nome, tipo)
+VALUES
+	("Goblin ", "pequenos goblinóides que se reproduzem rápido"),
+    ("Dalish ","habitantes de terras selvagens"),
+    ("Caçador", "Caçador experiente"),
+    ("Feitiçeiro", "Feiticeiro de abalu"),
+    ("Falmari", "habitantes das profundezas do oceano");
+
+INSERT INTO tb_personagem (nome, fk_classe, poder_ataque, poder_defesa)
+VALUES
+	("Her", 1, 5000, 600),
+    ("Kreu", 3, 1000, 5000),
+    ("Wula", 5, 1600, 700),
+    ("Jys", 4, 8000, 500),
+    ("Momo", 5, 200, 9000),
+    ("Gugu", 1, 3000, 900),
+    ("Troby", 2, 1000, 1000),
+    ("Xau", 1, 3000, 500);
+
+SELECT nome, fk_classe, poder_ataque, poder_defesa FROM tb_personagem WHERE poder_ataque >= 2000;
+
+
+
+SELECT nome, fk_classe, poder_ataque, poder_defesa FROM tb_personagem WHERE poder_defesa BETWEEN 1000 and 2000;
+
+
+SELECT nome, fk_classe, poder_ataque, poder_defesa FROM tb_personagem WHERE nome LIKE '%M%';
+
+
+
+SELECT tb_personagem.nome, tb_classe.nome AS classe, tb_classe.tipo, tb_personagem.poder_ataque, tb_personagem.poder_defesa
+FROM tb_personagem
+INNER JOIN tb_classe ON tb_personagem.fk_classe = tb_classe.id_classe;
+
+
+
+SELECT tb_personagem.nome, tb_classe.nome AS classe, tb_classe.tipo, tb_personagem.poder_ataque, tb_personagem.poder_defesa
+FROM tb_personagem
+INNER JOIN tb_classe ON tb_personagem.fk_classe = tb_classe.id_classe
+WHERE tb_classe.nome LIKE '%Goblin%';
+CREATE TABLE tb_classe (
+	id_classe INT NOT NULL AUTO_INCREMENT,
+    nome VARCHAR(255) NOT NULL,
+    tipo VARCHAR(255) NOT NULL,
+    PRIMARY KEY (id_classe)
+);
+
+CREATE TABLE tb_personagem (
+	id_personagem INT NOT NULL AUTO_INCREMENT,
+    nome VARCHAR(255) NOT NULL,
+    fk_classe INT NOT NULL,
+    poder_ataque INT NOT NULL,
+    poder_defesa INT NOT NULL,
+    PRIMARY KEY (id_personagem),
+    FOREIGN KEY (fk_classe) REFERENCES tb_classe(id_classe)
+);
+
+INSERT INTO tb_classe (nome, descricao)
+VALUES
+	("Goblin ", "pequenos goblinóides que se reproduzem rápido"),
+    ("Dalish ","habitantes de terras selvagens"),
+    ("Caçador", "Caçador experiente"),
+    ("Feitiçeiro", "Feiticeiro de abalu"),
+    ("Falmari", "habitantes das profundezas do oceano");
+
+INSERT INTO tb_personagem (nome, fk_classe, poder_ataque, poder_defesa)
+VALUES
+	("Her", 1, 5000, 600),
+    ("Kreu", 3, 1000, 5000),
+    ("Wula", 5, 1600, 700),
+    ("Jys", 4, 8000, 500),
+    ("Momo", 5, 200, 9000),
+    ("Gugu", 1, 3000, 900),
+    ("Troby", 2, 1000, 1000),
+    ("Xau", 1, 3000, 500);
+
+SELECT nome, fk_classe, poder_ataque, poder_defesa FROM tb_personagem WHERE poder_ataque >= 2000;
+
+
+
+SELECT nome, fk_classe, poder_ataque, poder_defesa FROM tb_personagem WHERE poder_defesa BETWEEN 1000 and 2000;
+
+
+SELECT nome, fk_classe, poder_ataque, poder_defesa FROM tb_personagem WHERE nome LIKE '%M%';
+
+
+
+SELECT tb_personagem.nome, tb_classe.nome AS classe, tb_classe.descricao, tb_personagem.poder_ataque, tb_personagem.poder_defesa
+FROM tb_personagem
+INNER JOIN tb_classe ON tb_personagem.fk_classe = tb_classe.id_classe;
+
+
+
+SELECT tb_personagem.nome, tb_classe.nome AS classe, tb_classe.descricao, tb_personagem.poder_ataque, tb_personagem.poder_defesa
+FROM tb_personagem
+INNER JOIN tb_classe ON tb_personagem.fk_classe = tb_classe.id_classe
+WHERE tb_classe.nome LIKE '%Goblin%';
+
+
+
