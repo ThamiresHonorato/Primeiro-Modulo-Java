@@ -1,0 +1,47 @@
+create database tb_cursoDaMinhaVida
+CREATE TABLE tb_categoria(
+	id_categoria INT NOT NULL AUTO_INCREMENT,
+    nome VARCHAR(255) NOT NULL,
+    tipo VARCHAR(255) NOT NULL,
+    PRIMARY KEY (id_categoria)
+    );
+    INSERT INTO tb_categoria (nome, tipo)
+	VALUES
+	("Programação", "Cursos de TI"),
+    ("Culinaria", "Cursos de Culinaria"),
+    ("Negócios", "Cursos de Negócios");
+    
+    CREATE TABLE tb_produto (
+	id_produto INT NOT NULL AUTO_INCREMENT,
+    nome VARCHAR(255) NOT NULL,
+    tipo VARCHAR(255) NOT NULL,
+    fk_categoria INT NOT NULL,
+    preco DECIMAL(10,2) NOT NULL,
+    PRIMARY KEY (id_produto),
+    FOREIGN KEY (fk_categoria) REFERENCES tb_categoria(id_categoria)
+);
+INSERT INTO tb_produto (nome, tipo, fk_categoria, preco)
+VALUES
+	("Java", "Linguagem de programação Java", 1, 90.00),
+    ("Python", "Linguagem de programação Pytho", 1, 90.00),
+    ("Plano de negócios", "Plano de negócios para empreendedores", 3, 79.90),
+    ("Biscoto Gurmet", "Receita de biscoto gurmet", 2, 22.90),
+    ("Bolo de Festa", "Receita de  bolo de festa", 2, 69.90),
+    ("Gestão Empresarial", "Gestão de negocios empresarial", 3, 69.90);
+    
+
+SELECT nome, tipo, preco FROM tb_produto WHERE preco >= 50;
+
+SELECT nome, tipo, preco FROM tb_produto WHERE preco BETWEEN 3 and 60;
+
+SELECT nome, tipo, preco FROM tb_produto WHERE nome LIKE "%B%";
+    
+SELECT tb_produto.nome, tb_produto.tipo, tb_categoria.nome AS categoria, tb_produto.preco 
+FROM tb_produto
+INNER JOIN tb_categoria on tb_produto.fk_categoria = tb_categoria.id_categoria;
+ 
+SELECT tb_produto.nome, tb_produto.tipo, tb_categoria.nome AS categoria, tb_produto.preco 
+FROM tb_produto
+INNER JOIN tb_categoria on tb_produto.fk_categoria = tb_categoria.id_categoria
+WHERE tb_categoria.nome LIKE "%Culinaria%"; 
+    

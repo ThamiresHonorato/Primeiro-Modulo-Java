@@ -1,0 +1,48 @@
+create database db_contruindo_a_nossa_vida;
+create table tb_categoria (
+	id_categoria INT NOT NULL AUTO_INCREMENT,
+    nome VARCHAR(255) NOT NULL,
+    tipo VARCHAR(255) NOT NULL,
+    PRIMARY KEY (id_categoria)
+
+);
+
+INSERT INTO tb_categoria (nome, tipo)
+VALUES
+	("Tijolo",  "Tijolo para construção "),
+    ("Cimento Area e Pedra", "Argamassas em geral"),
+    ("Telhas", "Telhas em geral");
+    
+create table tb_produto(
+id_produto INT NOT NULL AUTO_INCREMENT,
+    nome VARCHAR(255) NOT NULL,
+    tipo VARCHAR(255) NOT NULL,
+    fk_categoria INT NOT NULL,
+    preco DECIMAL(10,2) NOT NULL,
+    PRIMARY KEY (id_produto),
+    FOREIGN KEY (fk_categoria) REFERENCES tb_categoria(id_categoria)
+
+);
+INSERT INTO tb_produto (nome, tipo, fk_categoria, preco)
+VALUES
+	("Telha ondulada", "199x19x90mm", 3, 59.69),
+    ("Bloco de vidro", '19x19cm', 1, 13.99),
+    ("Cimento", "Saco 60kgs", 2, 29.99),
+    ("Gesso", "Saco 20Kg", 2, 25.90),
+    ("Bloco ceramico ", "54x60cm", 1, 9.90),
+    ("Telha de fibra", '40x23cm', 3, 5.69);
+    
+     SELECT nome, tipo, preco FROM tb_produto WHERE preco >= 50;
+
+	SELECT nome, tipo, preco FROM tb_produto WHERE preco BETWEEN 3 and 60;
+	SELECT nome, tipo, preco FROM tb_produto WHERE nome LIKE "%T%";
+
+	SELECT tb_produto.nome, tb_produto.tipo, tb_categoria.nome AS categoria, tb_produto.preco 
+	FROM tb_produto
+	INNER JOIN tb_categoria on tb_produto.fk_categoria = tb_categoria.id_categoria;
+    
+
+	SELECT tb_produto.nome, tb_produto.tipo, tb_categoria.nome AS categoria, tb_produto.preco 
+	FROM tb_produto
+	INNER JOIN tb_categoria on tb_produto.fk_categoria = tb_categoria.id_categoria
+	WHERE tb_categoria.nome LIKE "%Blocos%"; 
