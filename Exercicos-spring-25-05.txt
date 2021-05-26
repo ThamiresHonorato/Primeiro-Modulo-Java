@@ -1,0 +1,50 @@
+package com.HelloWord.HelloWorld;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class HelloWorldApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(HelloWorldApplication.class, args);
+	}
+
+}
+package com.HelloWord.HelloWorld;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("exercicio-spring01")
+
+public class PrimeiraAplicacao {
+	@GetMapping
+
+	public String HelloWorld() {
+		return "Uma string com as habilidades e mentalidades que você\r\n"
+				+ "utilizou para realizar essa atividade :"
+				+ "MENTALIDADE DE CRESCIMENTO E PERSISTÊNCIA.";
+	}
+
+}package com.HelloWord.HelloWorld;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("exercicio-spring02")
+
+
+public class SegundaAplicacao {
+	@GetMapping
+	public String HelloWorld() {
+		return "Seus objetivos de aprendizagem para\r\n"
+				+ "essa semana."
+				+ "Nessa semana  pretendo entender corrretamente o conteudo aplicados sobre frarework Spring boot./n2. Ter atenção aos detalhes, persistência e muito foco!!!";
+	}
+
+}
+
